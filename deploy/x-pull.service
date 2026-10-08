@@ -1,0 +1,27 @@
+[Unit]
+Description=Pull HTTP users into Xray
+Wants=network-online.target xray.service
+After=network-online.target xray.service
+
+[Service]
+Type=simple
+DynamicUser=yes
+ExecStart=/usr/local/bin/x-pull -config /etc/x-pull/config.json
+EnvironmentFile=-/etc/x-pull/environment
+Restart=on-failure
+RestartSec=5s
+TimeoutStopSec=15s
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+CapabilityBoundingSet=
+UMask=0077
+
+[Install]
+WantedBy=multi-user.target
