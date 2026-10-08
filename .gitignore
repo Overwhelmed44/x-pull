@@ -2,3 +2,5 @@
 /config.json
 /environment
 /coverage.out
+__pycache__/
+*.pyc

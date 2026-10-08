@@ -1,0 +1,10 @@
+.git
+.github
+bin
+.env*
+config.json
+environment
+coverage.out
+*.test
+__pycache__
+*.pyc

@@ -1,0 +1,13 @@
+services:
+  xray:
+    build: .
+    image: x-pull:local
+    restart: unless-stopped
+    stop_grace_period: 12s
+    ports:
+      - "127.0.0.1:10086:10086/tcp"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      - ./configs/xray.docker.example.json:/etc/x-pull/xray.json:ro
+      - ./configs/poller.docker.example.json:/etc/x-pull/poller.json:ro

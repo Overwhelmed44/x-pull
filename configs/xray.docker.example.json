@@ -1,0 +1,19 @@
+{
+  "log": {"loglevel": "warning"},
+  "api": {
+    "tag": "api",
+    "listen": "127.0.0.1:10085",
+    "services": ["HandlerService"]
+  },
+  "inbounds": [
+    {
+      "tag": "vless-in",
+      "listen": "0.0.0.0",
+      "port": 10086,
+      "protocol": "vless",
+      "settings": {"clients": [], "decryption": "none"},
+      "streamSettings": {"network": "tcp", "security": "none"}
+    }
+  ],
+  "outbounds": [{"protocol": "freedom", "tag": "direct"}]
+}
