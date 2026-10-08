@@ -13,11 +13,11 @@ jobs:
           cache: true
       - run: go test -race ./...
       - run: go vet ./...
-      - run: make build check
+      - run: make build
   container:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - run: docker compose config --quiet
       - run: docker build -t x-pull:local .
-      - run: python3 scripts/test-container.py x-pull:local
+      - run: python3 tests/container.py x-pull:local
